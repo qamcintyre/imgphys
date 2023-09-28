@@ -1,0 +1,53 @@
+data/raw/*
+!data/raw/.gitkeep
+
+data/datasets/train/*
+!data/datasets/train/.gitkeep
+
+data/datasets/test/*
+!data/datasets/test/.gitkeep
+
+data/datasets/validation/*
+!data/datasets/validation/.gitkeep
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+*.egg
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# Environment directories
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# macOS files
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite
+
+# OS generated files
+ehthumbs.db
+Thumbs.db
+
+# Ignore .git directory (this is usually not in the .gitignore as it's implicitly ignored)
+.git/
