@@ -61,5 +61,21 @@ def save_motion_sequences(num_videos, num_frames_per_video):
             frame_path = os.path.join(video_folder, f"frame_{j+1:04}.jpg")
             cv2.imwrite(frame_path, frame)
 
+def load_motion_sequences(frame_path):
+    """
+    Loads saved generations
+    """
+    video_dataset=[]
+    for video_folder in os.listdir(frame_path):
+        video=[]
+        for frame in video_folder:
+            img = cv2.imread(os.path.join(video_folder, frame))
+            video.append(np.asarray(img))
+        video_dataset.append(np.stack(video))
+    return np.stack(video_dataset)
+
+        
+
+
 if __name__ == '__main__':
     main()
