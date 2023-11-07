@@ -8,12 +8,13 @@ IMAGE_SIZE = 32
 @click.command()
 @click.option('--num_videos', default=10, type=int, help='Number of videos to generate.')
 @click.option('--num_frames', default=100, type=int, help='Number of frames per video.')
+@click.option('--save_dir', default='data/raw', type=str, help='Directory to save the videos.')
 
-def main(num_videos, num_frames):
+def main(num_videos, num_frames, save_dir):
     """
     Generates and saves frames to the src/data_generation/raw
     """
-    save_motion_sequences(num_videos, num_frames)
+    save_motion_sequences(num_videos, num_frames, save_dir)
 
 def generate_motion_sequence(num_frames, size=IMAGE_SIZE):
     """
@@ -47,12 +48,12 @@ def generate_motion_sequence(num_frames, size=IMAGE_SIZE):
 
     return frames
 
-def save_motion_sequences(num_videos, num_frames_per_video):
+def save_motion_sequences(num_videos, num_frames_per_video, save_dir):
     """
     Runs the generation and saves it to the folders
     """
     for i in range(num_videos):
-        video_folder = os.path.join("data", "raw", f"video{i+1}")
+        video_folder = os.path.join(save_dir, f"video_{i+1:04}")
         os.makedirs(video_folder, exist_ok=True)
         
         frames = generate_motion_sequence(num_frames_per_video)
