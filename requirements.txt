@@ -1,0 +1,9 @@
+numpy
+opencv-python
+click
+pytorch-lightning
+pandas
+scipy
+torch
+torchvision
+typing
