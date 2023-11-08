@@ -37,5 +37,4 @@ default_config = {
         "sparse_reservoir": True,
         "device": "cuda",
     },
-    }
 }
