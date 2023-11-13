@@ -1,0 +1,220 @@
+{
+    "os": "Linux-5.15.0-1036-aws-x86_64-with-glibc2.31",
+    "python": "3.12.0",
+    "heartbeatAt": "2023-11-13T04:46:46.641601",
+    "startedAt": "2023-11-13T04:46:45.443580",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/ubuntu/imgphys/run.py",
+    "codePathLocal": "run.py",
+    "codePath": "run.py",
+    "git": {
+        "remote": "https://github.com/Sh1su1Uch1ha/imgphys.git",
+        "commit": "24be7e7125413afb5df9c02641ae07cacf7d50ec"
+    },
+    "email": "carranzamoreno9@gmail.com",
+    "root": "/home/ubuntu/imgphys",
+    "host": "ip-172-31-6-141",
+    "username": "ubuntu",
+    "executable": "/opt/conda/envs/imgphys/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 2659.6291562499996,
+        "min": 1200.0,
+        "max": 3000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2663.544,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2682.68,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2663.648,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2682.717,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.66,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2677.593,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2662.127,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2668.591,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2651.725,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2646.642,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2663.674,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.672,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2682.368,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2663.603,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.551,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.598,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2663.629,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2682.702,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2663.679,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2682.735,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.66,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2677.608,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2662.1,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.62,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2651.835,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2646.526,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2663.727,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.639,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2682.258,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2663.581,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.486,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2669.635,
+            "min": 1200.0,
+            "max": 3000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1985.2918968200684,
+            "used": 1250.6935806274414
+        }
+    },
+    "gpu": "Tesla V100-SXM2-16GB",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "Tesla V100-SXM2-16GB",
+            "memory_total": 17179869184
+        },
+        {
+            "name": "Tesla V100-SXM2-16GB",
+            "memory_total": 17179869184
+        },
+        {
+            "name": "Tesla V100-SXM2-16GB",
+            "memory_total": 17179869184
+        },
+        {
+            "name": "Tesla V100-SXM2-16GB",
+            "memory_total": 17179869184
+        }
+    ],
+    "memory": {
+        "total": 239.86705017089844
+    }
+}

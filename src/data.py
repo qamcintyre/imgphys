@@ -9,12 +9,12 @@ import torch
 import torch.utils.data
 from torch.utils.data import Dataset, Subset
 from torch import Tensor
-import torchvision
+# import torchvision
 from typing import Any, Dict, List, Tuple
-import src.utils
-import torchvision.transforms as transforms
-import torchvision.transforms.v2 as transforms_v2
-from data_generation.one_body_generator import load_motion_sequences
+# import src.utils
+# import torchvision.transforms as transforms
+# import torchvision.transforms.v2 as transforms_v2
+# from data_generation.one_body_generator import load_motion_sequences
 
 class DataModule(pl.LightningDataModule):
     def __init__(
@@ -48,12 +48,17 @@ class DataModule(pl.LightningDataModule):
         self.precision = precision
 
     def setup(self, stage: str):
-        train_dataset, val_dataset, datum_shape = NBodyDataset(
+        train_dataset = NBodyDataset(
             wandb_config=self.wandb_config,
+            train=True
+        )
+        val_dataset = NBodyDataset(
+            wandb_config=self.wandb_config,
+            train=False
         )
         self.train_dataset = train_dataset
         self.val_dataset = val_dataset
-        self.datum_shape = datum_shape
+        self.datum_shape = train_dataset.datum_shape
         print(f"PhysicsDataModule.setup(stage={stage}) called.")
 
 
@@ -90,17 +95,22 @@ class DataModule(pl.LightningDataModule):
         print(f"TrajectoryDataModule.teardown(stage={stage}) called.")
 
 class NBodyDataset(torch.utils.data.Dataset):
-    def __init__(self, wandb_config: Dict[str, Any]):
+    def __init__(self, wandb_config: Dict[str, Any], train: bool):
         self.wandb_config = wandb_config
-        self.n = wandb_config["dataset_kwargs"]["n_bodies"]
-        self.data = load_motion_sequences(wandb_config["dataset_kwargs"]["frame_path"])
+        self.data = torch.tensor(np.load(wandb_config["data_path"]), dtype=torch.float32)
         
-
+        
+        if train:
+            self.data = self.data[:int(wandb_config['train_val_split']*self.data.shape[0])]
+        else:
+            self.data = self.data[int(wandb_config['train_val_split']*self.data.shape[0]):]
+        
+        self.datum_shape = self.data.shape[-2:]
     def __len__(self):
         return len(self.data)
 
     def __getitem__(self, idx):
-        datum = self.data[idx].squeeze()
-        return datum
+        datum = self.data[idx].unsqueeze(0)
+        return datum[:, :-1], datum[:, -1]
 
 

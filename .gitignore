@@ -51,3 +51,4 @@ Thumbs.db
 
 # Ignore .git directory (this is usually not in the .gitignore as it's implicitly ignored)
 .git/
+

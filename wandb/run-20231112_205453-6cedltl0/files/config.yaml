@@ -1,0 +1,124 @@
+wandb_version: 1
+
+data_path:
+  desc: null
+  value: /home/ubuntu/imgphys/data/raw.npy
+model_path:
+  desc: null
+  value: /home/ubuntu/imgphys/lightning_logs/nq7lc6op/epoch=98-step=198.ckpt
+save_path:
+  desc: null
+  value: /home/ubuntu/imgphys/figures/generations
+accumulate_grad_batches:
+  desc: null
+  value: 1
+backbone_kwargs:
+  desc: null
+  value:
+    architecture: convlstm
+    num_layers: 3
+    n_kernels: 5
+    kernel_size: 3
+    padding: same
+    activation: relu
+    reservoir_layers:
+    - 1
+batch_size_train:
+  desc: null
+  value: 32
+batch_size_val:
+  desc: null
+  value: 32
+check_val_every_n_epoch:
+  desc: null
+  value: 1
+dataset_dir:
+  desc: null
+  value: data
+gradient_clip_val:
+  desc: null
+  value: null
+num_workers:
+  desc: null
+  value: 8
+precision:
+  desc: null
+  value: 32
+prefetch_factor:
+  desc: null
+  value: 2
+dataset_kwargs:
+  desc: null
+  value:
+    channels: 1
+    frame_size:
+    - 32
+    - 32
+seed:
+  desc: null
+  value: 0
+lr:
+  desc: null
+  value: 0.001
+learning_rate_scheduler:
+  desc: null
+  value: null
+weight_decay:
+  desc: null
+  value: 0.0
+n_epochs:
+  desc: null
+  value: 100
+shuffle_train:
+  desc: null
+  value: true
+reservoir_kwargs:
+  desc: null
+  value:
+    dim: 64
+    sparsity: 0.95
+    spectral_radius: 0.95
+    max_iter: 3
+    leak_rate: 0.5
+    bias: false
+    random_projection: structured
+    sparse_reservoir: true
+    nonlinearity: tanh
+    skip_transform_enabled: true
+    skip_dropout_prob: 0.0
+train_val_split:
+  desc: null
+  value: 0.8
+num_generations:
+  desc: null
+  value: 10
+_wandb:
+  desc: null
+  value:
+    python_version: 3.12.0
+    cli_version: 0.16.0
+    framework: lightning
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1699851293.74074
+    t:
+      1:
+      - 1
+      - 9
+      - 55
+      - 103
+      - 105
+      2:
+      - 1
+      - 9
+      - 55
+      - 103
+      - 105
+      3:
+      - 16
+      - 23
+      4: 3.12.0
+      5: 0.16.0
+      8:
+      - 5
+      13: linux-x86_64

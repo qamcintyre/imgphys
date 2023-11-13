@@ -1,0 +1,154 @@
+wandb_version: 1
+
+data_path:
+  desc: null
+  value: /home/ubuntu/imgphys/data/raw.npy
+accumulate_grad_batches:
+  desc: null
+  value: 1
+backbone_kwargs:
+  desc: null
+  value:
+    architecture: convlstm
+    num_layers: 3
+    n_kernels: 5
+    kernel_size: 3
+    padding: same
+    activation: relu
+batch_size_train:
+  desc: null
+  value: 32
+batch_size_val:
+  desc: null
+  value: 32
+check_val_every_n_epoch:
+  desc: null
+  value: 5
+dataset_dir:
+  desc: null
+  value: data
+gradient_clip_val:
+  desc: null
+  value: null
+num_workers:
+  desc: null
+  value: 8
+precision:
+  desc: null
+  value: 32
+prefetch_factor:
+  desc: null
+  value: 2
+dataset:
+  desc: null
+  value: cifar10
+dataset_kwargs:
+  desc: null
+  value:
+    channels: 1
+    frame_size:
+    - 32
+    - 32
+seed:
+  desc: null
+  value: 0
+lr:
+  desc: null
+  value: 0.001
+learning_rate_scheduler:
+  desc: null
+  value: null
+weight_decay:
+  desc: null
+  value: 0.0
+n_epochs:
+  desc: null
+  value: 100
+shuffle_train:
+  desc: null
+  value: true
+reservoir_kwargs:
+  desc: null
+  value:
+    dim: 64
+    sparsity: 0.95
+    spectral_radius: 0.95
+    leak_rate: 0.5
+    bias: false
+    random_projection: structured
+    sparse_reservoir: true
+    device: cuda
+train_val_split:
+  desc: null
+  value: 0.8
+_wandb:
+  desc: null
+  value:
+    python_version: 3.12.0
+    cli_version: 0.16.0
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1699839072.912933
+    t:
+      1:
+      - 1
+      - 55
+      - 105
+      2:
+      - 1
+      - 55
+      - 105
+      3:
+      - 16
+      - 23
+      4: 3.12.0
+      5: 0.16.0
+      8:
+      - 5
+      13: linux-x86_64
+wandb_config:
+  desc: null
+  value:
+    data_path: /home/ubuntu/imgphys/data/raw.npy
+    accumulate_grad_batches: 1
+    backbone_kwargs:
+      architecture: convlstm
+      num_layers: 3
+      n_kernels: 5
+      kernel_size: 3
+      padding: same
+      activation: relu
+    batch_size_train: 32
+    batch_size_val: 32
+    check_val_every_n_epoch: 5
+    dataset_dir: data
+    gradient_clip_val: null
+    num_workers: 8
+    precision: 32
+    prefetch_factor: 2
+    dataset: cifar10
+    dataset_kwargs:
+      channels: 1
+      frame_size:
+      - 32
+      - 32
+    seed: 0
+    lr: 0.001
+    learning_rate_scheduler: null
+    weight_decay: 0.0
+    n_epochs: 100
+    shuffle_train: true
+    reservoir_kwargs:
+      dim: 64
+      sparsity: 0.95
+      spectral_radius: 0.95
+      leak_rate: 0.5
+      bias: false
+      random_projection: structured
+      sparse_reservoir: true
+      device: cuda
+    train_val_split: 0.8
+wandb_logger:
+  desc: null
+  value: <lightning.pytorch.loggers.wandb.WandbLogger object at 0x7f5ca4d59820>
