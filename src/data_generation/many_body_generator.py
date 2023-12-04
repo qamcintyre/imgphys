@@ -4,7 +4,7 @@ import click
 
 IMAGE_SIZE = 128  
 GRAVITY_CONSTANT = 1.0 
-MAX_BODIES = 5  
+MAX_BODIES = 8  
 
 @click.command()
 @click.option('--num_videos', default=100, type=int, help='Number of videos to generate.')
@@ -18,7 +18,7 @@ def generate_motion_sequence(num_frames, size=IMAGE_SIZE):
     num_bodies = np.random.randint(2, MAX_BODIES + 1)  # Random number of bodies
     positions = np.random.uniform(0, size, size=(num_bodies, 2))
     velocities = np.random.uniform(-1, 2, size=(num_bodies, 2))
-    edge_lengths = np.random.randint(2, 5, size=num_bodies)  # Random sizes
+    edge_lengths = np.random.randint(2, 9, size=num_bodies)  # Random sizes
 
     frames = []
     for _ in range(num_frames):
