@@ -1,7 +1,7 @@
 import os
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 
 
 import json
@@ -17,10 +17,10 @@ import wandb
 
 from src.data import DataModule
 from src.globals import default_config
-from src.system import set_seed, ConvLSTMTrainingSystem
+from src.system import set_seed, TrainingSystem
 
 
-run = wandb.init(project="imgphys", config=default_config)
+run = wandb.init(project="imgphys", config=default_config, name=default_config["name"])
 wandb_config = dict(wandb.config)
 
 # Convert "None" (type: str) to None (type: NoneType)
@@ -30,7 +30,12 @@ for key in wandb_config.keys():
             wandb_config[key] = None
 
 # Create checkpoint directory for this run, and save the config to the directory.
-run_checkpoint_dir = os.path.join("lightning_logs", wandb.run.id)
+run_checkpoint_dir = os.path.join(
+    "lightning_logs",
+    wandb.run.id
+    if wandb_config["run_id"] is None
+    else "%s_%s" % (wandb_config["run_id"], wandb.run.id),
+)
 os.makedirs(run_checkpoint_dir)
 with open(os.path.join(run_checkpoint_dir, "wandb_config.json"), "w") as fp:
     json.dump(obj=wandb_config, fp=fp)
@@ -43,10 +48,7 @@ torch_generator = set_seed(seed=wandb_config["seed"])
 
 wandb_logger = WandbLogger(experiment=run)
 checkpoint_callback = ModelCheckpoint(
-    monitor="loss",
-    save_top_k=1,
-    mode="min",
-    dirpath=run_checkpoint_dir
+    monitor="val/loss", save_top_k=1, mode="min", dirpath=run_checkpoint_dir
 )
 
 callbacks = [
@@ -58,21 +60,22 @@ datamodule = DataModule(
     wandb_config=wandb_config,
     run_checkpoint_dir=run_checkpoint_dir,
     torch_generator=torch_generator,
+    num_workers=wandb_config["num_workers"],
 )
 
 
 # Need to call this to determine the number of observation dimensions, and also initialize the memories.
 datamodule.setup(stage="setup")
 
-system = ConvLSTMTrainingSystem(wandb_config=wandb_config, wandb_logger=wandb_logger)
+system = TrainingSystem(wandb_config=wandb_config, wandb_logger=wandb_logger)
 trainer = pl.Trainer(
     accumulate_grad_batches=wandb_config["accumulate_grad_batches"],
     callbacks=callbacks,
     check_val_every_n_epoch=wandb_config["check_val_every_n_epoch"],
     default_root_dir=run_checkpoint_dir,
     deterministic=True,
-    # accelerator="gpu",
-    # devices="4",
+    accelerator="gpu",
+    # devices="2", # 2
     # fast_dev_run=True,
     fast_dev_run=False,
     logger=wandb_logger,
@@ -80,7 +83,7 @@ trainer = pl.Trainer(
     # overfit_batches=1,  # useful for debugging
     gradient_clip_val=wandb_config["gradient_clip_val"],
     max_epochs=wandb_config["n_epochs"],
-    num_sanity_val_steps=-1,  # -1 means runs all of validation before starting to train.
+    num_sanity_val_steps=10,  # -1 means runs all of validation before starting to train.
     # profiler="simple",  # Simplest profiler
     # profiler="advanced",  # More advanced profiler
     # profiler=PyTorchProfiler(filename=),  # PyTorch specific profiler
